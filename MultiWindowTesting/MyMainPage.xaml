@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MultiWindowTesting.MyMainPage">
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="{Binding State, StringFormat='Window: {0:F0}'}" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+
+        <ListView ItemsSource="{Binding Items}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding .}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,Auto"
+            Padding="20"
+            RowSpacing="20"
+            BackgroundColor="LightGray">
+            <Entry Text="{Binding ItemText, Mode=TwoWay}" Grid.Column="0" />
+            <Button
+                Text="Add Item"
+                Command="{Binding AddItemCommand}"
+                Grid.Column="1"
+                BackgroundColor="Gray"
+                TextColor="White"
+                CornerRadius="6"
+                Padding="10,0,10,0"/>
+
+            <Button
+                Text="New Window"
+                Command="{Binding NewWindowCommand}"
+                BackgroundColor="Gray"
+                TextColor="White"
+                CornerRadius="6"
+                Padding="10,0,10,0"
+                Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" />
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
