@@ -23,7 +23,7 @@ namespace MultiWindowTesting.Droid
 			var intent = new Intent(Application.Context, typeof(FormsActivity));
 
 			intent.Extras.PutString(WindowService.WindowIdKey, windowId);
-
+			intent.AddFlags(ActivityFlags.LaunchAdjacent);
 			Application.Context.StartActivity(intent);
 		}
 	}
